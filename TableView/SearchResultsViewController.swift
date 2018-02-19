@@ -40,15 +40,15 @@ class SearchResultsViewController: UIViewController, UITableViewDelegate, UITabl
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("selected row \(indexPath.row)")
-        if let data = tableData[indexPath.row] as? [String, String] {
-            let image = data[APIController.KEY_THUMBNAIL]
-            let name = data[APIController.KEY_APP_NAME]
-            let price = data[APIController.KEY_PRICE]
-            
-            let dialog = UIAlertController(title: name, message: price, preferredStyle: .alert)
-            dialog.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            self.present(dialog, animated: true, completion: nil)
-        }
+        let data = tableData[indexPath.row]
+        let image = data[APIController.KEY_THUMBNAIL]
+        let name = data[APIController.KEY_APP_NAME]
+        let price = data[APIController.KEY_PRICE]
+        
+        let dialog = UIAlertController(title: name, message: price, preferredStyle: .alert)
+        dialog.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(dialog, animated: true, completion: nil)
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
